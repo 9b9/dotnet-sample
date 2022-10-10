@@ -23,7 +23,6 @@ jobs:
         path: TestResults/*.trx
   
   publish-test-results:
-    name: "Publish Tests Results"
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -41,4 +40,5 @@ jobs:
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
+          fail_on: errors
           trx_files: "artifacts/**/*.trx"
