@@ -13,4 +13,4 @@ $env:IMAGE_NAME = "$env:PROJECT_NAME"
 $env:LOCAL_IMAGE_NAME_BUILD_TAG = "${env:PROJECT_NAME}.local.build.env:build"
 $env:LOCAL_IMAGE_NAME_TEST_TAG = "${env:PROJECT_NAME}.local.build.env:test"
 
-$env:RELEASE_VER = "$env:VERSION_MAJOR.$env:VERSION_MINOR.$env:VERSION_PATCH
+$env:RELEASE_VER = "$env:VERSION_MAJOR.$env:VERSION_MINOR.$env:VERSION_PATCH"
