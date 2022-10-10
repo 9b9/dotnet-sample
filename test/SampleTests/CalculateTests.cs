@@ -10,7 +10,7 @@ public class Tests
         var sut = new Sample.Calculate();
 
         // Act
-        var actual = sut.Add(a, b);
+         var actual = sut.Add(a, b);
 
         // Assert
         Assert.AreEqual(expected, actual);
