@@ -7,6 +7,7 @@ if (-not (Test-Path env:LOCAL_IMAGE_NAME_BUILD_TAG)) { $env:LOCAL_IMAGE_NAME_BUI
 
 docker build `
     --target build `
+    --cache-from $env:LOCAL_IMAGE_NAME_BUILD_TAG `
     --build-arg RELEASE_VER=$env:RELEASE_VER `
     -t $env:LOCAL_IMAGE_NAME_BUILD_TAG `
     .
