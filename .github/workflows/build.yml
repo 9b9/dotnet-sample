@@ -15,10 +15,36 @@ jobs:
       run: .\scripts\_1_SetENV.ps1 && .\scripts\_3_Build.ps1
     - name: Test
       run: .\scripts\_1_SetENV.ps1 && .\scripts\_5_Tests.ps1
-    - name: Test Report
-      uses: dorny/test-reporter@v1
-      if: success() || failure()    # run this step even if previous step failed
+    - name: Upload Test Results
+      if: always()
+      uses: actions/upload-artifact@v2
       with:
-        name: test-results          # Name of the check run which will be created
-        path: TestResults/*.trx     # Path to test results
-        reporter: dotnet-trx        # Format of test results
+        name: Test Results
+        path: TestResults/*.trx
+
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      if: always()
+      with:
+        trx_files: "TestResults/*.trx"
+  
+  publish-test-results:
+    name: "Publish Tests Results"
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      pull-requests: write # only needed unless run with comment_mode: off
+      contents: read       # only needed for private repository
+      issues: read         # only needed for private repository
+    if: always()
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          junit_files: "artifacts/**/*.trx"
