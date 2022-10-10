@@ -47,4 +47,4 @@ jobs:
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
-          nunit_files: "artifacts/**/*.trx"
+          trx_files: "artifacts/**/*.trx"
