@@ -13,6 +13,6 @@ public class Tests
         var actual = sut.Add(a, b);
 
         // Assert
-        Assert.AreEqual(expected, actual);
+        Assert.That(actual, Is.EqualTo(expected))
     }
 }
