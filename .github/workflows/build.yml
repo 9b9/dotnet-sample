@@ -7,12 +7,11 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: self-hosted
-
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name
+    - name: Build
+      run: .\scripts\_1_SetENV.ps1 && .\scripts\_3_Build.ps1
+    - name: Test
+      run: .\scripts\_1_SetENV.ps1 && .\scripts\_5_Tests.ps1
