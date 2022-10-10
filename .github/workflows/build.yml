@@ -41,4 +41,5 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
           fail_on: errors
+          check_name: Unit Test Results
           trx_files: "artifacts/**/*.trx"
