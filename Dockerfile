@@ -1,3 +1,5 @@
+# escape=`
+
 ARG TEST_RESULT_DIR=TestResults
 
 # get base imgae for build dotnet core app
@@ -22,4 +24,7 @@ FROM build AS test
 ARG TEST_RESULT_DIR
 
 # run unit tests
-RUN dotnet test --no-restore --logger:trx --results-directory:%TEST_RESULT_DIR%;
+RUN pwsh.exe -Command `
+    dotnet test --no-restore --logger:trx --results-directory:%TEST_RESULT_DIR%; `
+    dotnet clean test/BapDbTests -c %CONFIGURATION%; `
+    exit 0
