@@ -7,7 +7,7 @@ public class Tests
     public void Add_AddTwoValue_ReturnsSum(int a, int b, int expected)
     {
         // Arrange
-        var sut = new Sample.Calculate();
+         var sut = new Sample.Calculate();
 
         // Act
         var actual = sut.Add(a, b);
