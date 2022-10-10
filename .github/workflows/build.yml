@@ -21,12 +21,6 @@ jobs:
       with:
         name: Test Results
         path: TestResults/*.trx
-
-    - name: Publish Test Results
-      uses: EnricoMi/publish-unit-test-result-action/composite@v2
-      if: always()
-      with:
-        trx_files: "TestResults/*.trx"
   
   publish-test-results:
     name: "Publish Tests Results"
